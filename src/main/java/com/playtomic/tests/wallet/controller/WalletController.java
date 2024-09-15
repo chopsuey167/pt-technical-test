@@ -4,6 +4,7 @@ import com.playtomic.tests.wallet.dto.WalletResponseDto;
 import com.playtomic.tests.wallet.entity.Wallet;
 import com.playtomic.tests.wallet.mapper.WalletDtoMapper;
 import com.playtomic.tests.wallet.service.WalletService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,8 @@ public class WalletController {
   }
 
   @GetMapping("/{id}")
-  public WalletResponseDto getWallet(@PathVariable Long id) {
+  public ResponseEntity<WalletResponseDto> getWallet(@PathVariable Long id) {
     Wallet wallet = walletService.getWallet(id);
-    return walletDtoMapper.toWalletResponseDto(wallet);
+    return ResponseEntity.ok(walletDtoMapper.toWalletResponseDto(wallet));
   }
 }
