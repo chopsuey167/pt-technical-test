@@ -22,7 +22,7 @@ public class WalletController {
   }
 
   @GetMapping("/{id}")
-  public WalletResponseDto getWalletBalance(@PathVariable Long id) {
+  public WalletResponseDto getWallet(@PathVariable Long id) {
     Wallet wallet = walletService.getWallet(id);
     return walletDtoMapper.toWalletResponseDto(wallet);
   }
