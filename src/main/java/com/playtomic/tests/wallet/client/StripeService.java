@@ -1,6 +1,8 @@
-package com.playtomic.tests.wallet.service;
+package com.playtomic.tests.wallet.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.playtomic.tests.wallet.dto.PaymentDto;
+import com.playtomic.tests.wallet.exception.StripeServiceException;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,9 +53,9 @@ public class StripeService {
      *
      * @throws StripeServiceException
      */
-    public Payment charge(@NonNull String creditCardNumber, @NonNull BigDecimal amount) throws StripeServiceException {
+    public PaymentDto charge(@NonNull String creditCardNumber, @NonNull BigDecimal amount) throws StripeServiceException {
         ChargeRequest body = new ChargeRequest(creditCardNumber, amount);
-        return restTemplate.postForObject(chargesUri, body, Payment.class);
+        return restTemplate.postForObject(chargesUri, body, PaymentDto.class);
     }
 
     /**
