@@ -65,7 +65,7 @@ public class StripeService {
   }
 
   @AllArgsConstructor
-  public static class ChargeRequest {
+  private static class ChargeRequest {
 
     @NonNull
     @JsonProperty("credit_card")
