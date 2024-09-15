@@ -4,6 +4,7 @@ import com.playtomic.tests.wallet.entity.Wallet;
 import com.playtomic.tests.wallet.exception.WalletNotFoundException;
 import com.playtomic.tests.wallet.repository.WalletRepository;
 import com.playtomic.tests.wallet.service.WalletService;
+import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,5 +17,10 @@ public class WalletServiceImpl implements WalletService {
   @Override
   public Wallet getWallet(Long id) {
     return walletRepository.findById(id).orElseThrow(WalletNotFoundException::new);
+  }
+
+  @Override
+  public Wallet topUpWallet(Long id, String creditCard, BigDecimal amount) {
+    return null;
   }
 }
