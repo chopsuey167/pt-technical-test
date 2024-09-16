@@ -5,6 +5,7 @@ import com.playtomic.tests.wallet.dto.WalletTopUpRequestDto;
 import com.playtomic.tests.wallet.entity.Wallet;
 import com.playtomic.tests.wallet.mapper.WalletDtoMapper;
 import com.playtomic.tests.wallet.service.WalletService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +35,8 @@ public class WalletController {
 
   @PostMapping("/{id}/top-up")
   public ResponseEntity<WalletResponseDto> topUpWallet(@PathVariable Long id,
-      @RequestBody WalletTopUpRequestDto topUpRequestDto, @RequestHeader("Idempotency-Key") String idempotencyKey) {
+      @Valid @RequestBody WalletTopUpRequestDto topUpRequestDto,
+      @RequestHeader("Idempotency-Key") String idempotencyKey) {
     Wallet wallet = walletService.topUpWallet(id, topUpRequestDto.creditCard(), topUpRequestDto.amount(),
         idempotencyKey);
     return ResponseEntity.ok(walletDtoMapper.toWalletResponseDto(wallet));

@@ -4,6 +4,9 @@ server:
 ---
 spring.config.activate.on-profile: develop
 spring:
+  h2:
+    console:
+      enabled: true
   jpa:
     show_sql: false
     database: H2
