@@ -19,6 +19,7 @@ public class Transaction {
   private Long id;
   private BigDecimal amount;
   private TransactionStatus status;
+  private String paymentId;
   private LocalDateTime transactionDate;
   @ManyToOne
   @JoinColumn(name = "wallet_id")

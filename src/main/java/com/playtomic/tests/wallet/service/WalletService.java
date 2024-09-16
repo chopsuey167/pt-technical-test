@@ -7,5 +7,5 @@ public interface WalletService {
 
   Wallet getWallet(Long id);
 
-  Wallet topUpWallet(Long id, String creditCard, BigDecimal amount);
+  Wallet topUpWallet(Long id, String creditCard, BigDecimal amount, String idempotencyKey);
 }

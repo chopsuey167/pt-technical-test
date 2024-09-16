@@ -3,6 +3,7 @@ package com.playtomic.tests.wallet.client;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.playtomic.tests.wallet.dto.PaymentDto;
 import com.playtomic.tests.wallet.exception.StripeServiceException;
+import com.playtomic.tests.wallet.service.PaymentService;
 import java.math.BigDecimal;
 import java.net.URI;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ import org.springframework.web.client.RestTemplate;
  * to charge less than 10€.
  */
 @Service
-public class StripeService {
+public class StripeService implements PaymentService {
 
   @NonNull
   private URI chargesUri;

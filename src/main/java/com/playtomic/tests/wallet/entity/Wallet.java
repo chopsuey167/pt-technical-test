@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;
+import org.springframework.data.annotation.Version;
 
 @Entity
 @Data
@@ -19,6 +20,10 @@ public class Wallet {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private BigDecimal balance;
+  private String idempotencyKey;
+  @Version
+  private Long version;
+
   @OneToMany(mappedBy = "wallet", cascade = CascadeType.ALL)
   private List<Transaction> transactions = new ArrayList<>();
 }

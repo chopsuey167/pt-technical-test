@@ -4,13 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.NonNull;
 
-public class PaymentDto {
+public record PaymentDto(@NonNull String id) {
 
-    @NonNull
-    private String id;
-
-    @JsonCreator
-    public PaymentDto(@JsonProperty(value = "id", required = true) String id) {
-        this.id = id;
-    }
+  @JsonCreator
+  public PaymentDto(@JsonProperty(value = "id", required = true) String id) {
+    this.id = id;
+  }
 }
