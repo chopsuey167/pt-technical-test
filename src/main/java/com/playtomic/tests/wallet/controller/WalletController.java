@@ -35,6 +35,7 @@ public class WalletController {
   @PostMapping("/{id}/top-up")
   public ResponseEntity<WalletResponseDto> topUpWallet(@PathVariable Long id,
       @RequestBody WalletTopUpRequestDto topUpRequestDto, @RequestHeader("Idempotency-Key") String idempotencyKey) {
-    return null;
+    Wallet wallet = walletService.topUpWallet(id, topUpRequestDto.creditCard(), topUpRequestDto.amount());
+    return ResponseEntity.ok(walletDtoMapper.toWalletResponseDto(wallet));
   }
 }
