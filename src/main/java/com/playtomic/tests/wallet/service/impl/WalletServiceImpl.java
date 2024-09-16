@@ -55,7 +55,7 @@ public class WalletServiceImpl implements WalletService {
     transaction.setTransactionDate(LocalDateTime.now());
     transaction.setStatus(TransactionStatus.PENDING);
 
-    Transaction newTransaction = this.transactionRepository.save(transaction);
+    Transaction newTransaction = transactionRepository.save(transaction);
 
     // Call payment service
     try {
@@ -69,7 +69,7 @@ public class WalletServiceImpl implements WalletService {
     }
 
     // Update transaction status and add payment id
-    this.transactionRepository.save(newTransaction);
+    transactionRepository.save(newTransaction);
 
     // Update balance wallet
     wallet.setBalance(wallet.getBalance().add(amount));
