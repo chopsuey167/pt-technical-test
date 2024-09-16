@@ -1,6 +1,5 @@
 package com.playtomic.tests.wallet.service.impl;
 
-import com.playtomic.tests.wallet.client.StripeService;
 import com.playtomic.tests.wallet.dto.PaymentDto;
 import com.playtomic.tests.wallet.entity.Transaction;
 import com.playtomic.tests.wallet.entity.TransactionStatus;
@@ -27,7 +26,7 @@ public class WalletServiceImpl implements WalletService {
   private final PaymentService paymentService;
 
   public WalletServiceImpl(WalletRepository walletRepository, TransactionRepository transactionRepository,
-      StripeService stripeService, PaymentService paymentService) {
+      PaymentService paymentService) {
     this.walletRepository = walletRepository;
     this.transactionRepository = transactionRepository;
     this.paymentService = paymentService;
